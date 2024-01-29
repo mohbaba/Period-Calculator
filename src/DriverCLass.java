@@ -8,7 +8,7 @@ public class DriverCLass{
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("1. Calculate your next period date and other related info");
-        System.out.println("2. Calculate your menstrual cycle");
+        //System.out.println("2. Calculate your menstrual cycle");
 
         int response = scanner.nextInt();
         while(response > 2 || response < 1){
@@ -55,6 +55,7 @@ public class DriverCLass{
 
         System.out.println("Which year? ");
         int year = scanner.nextInt();
+
         menstrualCycleCalculator.setYear(year);
 
         System.out.println("What is your average cycle? ");

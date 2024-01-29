@@ -39,7 +39,7 @@ class MenstrualCycleCalculatorTest {
     }
 
     @Test
-    public void testsetDate() {
+    public void testSetDate() {
         MenstrualCycleCalculator menstrualCycleCalculator = new MenstrualCycleCalculator();
         menstrualCycleCalculator.setLastPeriodDate(2);
         menstrualCycleCalculator.setMonth(2);

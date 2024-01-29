@@ -1,10 +1,18 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MenstrualCycleCalculatorTest {
-
-
+    private MenstrualCycleCalculator menstrualCycleCalculator;
+    @BeforeEach
+    public void testAll(){
+        menstrualCycleCalculator = new MenstrualCycleCalculator();
+        menstrualCycleCalculator.setYear(2023);
+        menstrualCycleCalculator.setMonth(12);
+        menstrualCycleCalculator.setLastPeriodDate(1);
+        menstrualCycleCalculator.setAveragePeriodCycle(28);
+    }
     @Test
     void getMonth() {
         MenstrualCycleCalculator menstrualCycleCalculator = new MenstrualCycleCalculator();
@@ -63,9 +71,8 @@ class MenstrualCycleCalculatorTest {
 
     @Test
     void testGetOvulationDay() {
-        MenstrualCycleCalculator menstrualCycleCalculator = new MenstrualCycleCalculator();
-        int ovulationDay = menstrualCycleCalculator.getOvulationDay();
-        assertTrue(ovulationDay > 0);
+        int expected = 15;
+        assertEquals(expected,menstrualCycleCalculator.getOvulationDay());
     }
 
     @Test
@@ -85,45 +92,36 @@ class MenstrualCycleCalculatorTest {
 
     @Test
     void testGetNextPeriodDate() {
-        MenstrualCycleCalculator menstrualCycleCalculator = new MenstrualCycleCalculator();
-        menstrualCycleCalculator.setYear(2023);
-        menstrualCycleCalculator.setMonth(12);
-        menstrualCycleCalculator.setLastPeriodDate(9);
+        assertEquals("2023-12-29",menstrualCycleCalculator.getNextPeriodDate().toString());
         assertNotNull(menstrualCycleCalculator.getNextPeriodDate());
     }
 
     @Test
-    void getOvulationStart() {
-        MenstrualCycleCalculator menstrualCycleCalculator = new MenstrualCycleCalculator();
-        menstrualCycleCalculator.setYear(2023);
-        menstrualCycleCalculator.setMonth(12);
-        menstrualCycleCalculator.setLastPeriodDate(9);
+    public void getOvulationStart() {
         assertNotNull(menstrualCycleCalculator.getOvulationStart());
+        assertEquals("2023-12-13",menstrualCycleCalculator.getOvulationStart().toString());
     }
 
     @Test
-    void getOvulationEnd() {
+    public void getOvulationEnd() {
+        assertNotNull(menstrualCycleCalculator.getOvulationEnd());
+        assertEquals("2023-12-17",menstrualCycleCalculator.getOvulationEnd().toString());
     }
+
+
 
     @Test
     void getSafePeriodStart() {
+        assertNotNull(menstrualCycleCalculator.getSafePeriodStart());
+        assertEquals("2023-12-18",menstrualCycleCalculator.getSafePeriodStart().toString());
     }
 
     @Test
     void getSafePeriodEnd() {
+        assertNotNull(menstrualCycleCalculator.getOvulationEnd());
+        assertEquals("2023-12-23",menstrualCycleCalculator.getOvulationEnd().toString());
     }
 
-    @Test
-    void displayMenu() {
-    }
-
-    @Test
-    void displayOption1() {
-    }
-
-    @Test
-    void mainApp() {
-    }
 
 
 }

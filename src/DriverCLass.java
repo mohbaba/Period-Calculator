@@ -66,27 +66,41 @@ public class DriverCLass{
         }
         menstrualCycleCalculator.setAveragePeriodCycle(averageCycle);
 
-        LocalDate ovulationStart = menstrualCycleCalculator.getOvulationStart();
-        LocalDate ovulationEnd = menstrualCycleCalculator.getOvulationEnd();
-        DayOfWeek ovulationDayOfWeek = ovulationEnd.getDayOfWeek();
-        int ovulationDayOfMonth = ovulationStart.getDayOfMonth();
+        System.out.println(menstrualCycleCalculator.getNextPeriodDate());
+for (int counter = 0 ; counter < 3; counter++) {
+    LocalDate ovulationStart = menstrualCycleCalculator.getOvulationStart();
+    LocalDate ovulationEnd = menstrualCycleCalculator.getOvulationEnd();
+    DayOfWeek ovulationDayOfWeek = ovulationEnd.getDayOfWeek();
+    int ovulationDayOfMonth = ovulationStart.getDayOfMonth();
 
-        System.out.printf("Most probable ovulation period starts on %s %s till %s %s %s %n", ovulationStart.getDayOfWeek().toString(), ovulationDayOfMonth, ovulationDayOfWeek.toString(), ovulationEnd.getDayOfMonth(), ovulationStart.getMonth().toString());
+    System.out.println();
+    System.out.println();
 
-        LocalDate safePeriodStart = menstrualCycleCalculator.getSafePeriodStart();
-        LocalDate safePeriodEnd = menstrualCycleCalculator.getSafePeriodEnd();
-        int safeDayOfMonth = safePeriodEnd.getDayOfMonth();
-        DayOfWeek safeDayOfWeek = safePeriodEnd.getDayOfWeek();
+    System.out.println("-----------------------------------------------------------------------");
+    System.out.println("-----------------------------------------------------------------------");
+    System.out.printf("Most probable ovulation period starts on %s %sth till %s %sth of %s %n", ovulationStart.getDayOfWeek().toString(), ovulationDayOfMonth, ovulationDayOfWeek.toString(), ovulationEnd.getDayOfMonth(), ovulationStart.getMonth().toString());
 
-        System.out.printf("Safe period starts on %s %s till %s %s %s%n", safePeriodStart.getDayOfWeek().toString(), safePeriodStart.getDayOfMonth(), safeDayOfWeek.toString(), safeDayOfMonth, safePeriodEnd.getMonth().toString());
+    LocalDate safePeriodStart = menstrualCycleCalculator.getSafePeriodStart();
+    LocalDate safePeriodEnd = menstrualCycleCalculator.getSafePeriodEnd();
+    int safeDayOfMonth = safePeriodEnd.getDayOfMonth();
+    DayOfWeek safeDayOfWeek = safePeriodEnd.getDayOfWeek();
 
-        LocalDate nextPeriod = menstrualCycleCalculator.getNextPeriodDate();
-        Month periodMonth = nextPeriod.getMonth();
-        int periodDay = nextPeriod.getDayOfMonth();
-        DayOfWeek periodDayOfWeek = nextPeriod.getDayOfWeek();
+    System.out.printf("Safe period starts on %s %sth till %s %sth of %s%n", safePeriodStart.getDayOfWeek().toString(), safePeriodStart.getDayOfMonth(), safeDayOfWeek.toString(), safeDayOfMonth, safePeriodEnd.getMonth().toString());
 
-        System.out.println("Expect your next period on "+ periodDayOfWeek +" "+ periodDay +" "+ periodMonth);
+    LocalDate nextPeriod = menstrualCycleCalculator.getNextPeriodDate();
+    Month periodMonth = nextPeriod.getMonth();
+    int periodDay = nextPeriod.getDayOfMonth();
+    DayOfWeek periodDayOfWeek = nextPeriod.getDayOfWeek();
 
+    System.out.println("Expect your next period on " + periodDayOfWeek + " " + periodDay + " " + periodMonth);
+    System.out.println("-----------------------------------------------------------------------");
+    System.out.println("-----------------------------------------------------------------------");
+
+    menstrualCycleCalculator.setLastPeriodDate(periodDay);
+    menstrualCycleCalculator.setMonth(nextPeriod.getMonthValue());
+    menstrualCycleCalculator.setYear(nextPeriod.getYear());
+    menstrualCycleCalculator.setDate();
+}
     }
 
     public static void mainApp(){
